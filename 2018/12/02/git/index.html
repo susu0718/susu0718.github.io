@@ -15,7 +15,8 @@
 <meta property="og:description" content="Git的学习一.Git的定义Git是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。Git 与常用的版本控制工具 CVS, Subversion 等不同，它采用了分布式版本库的方式，不必服务器端软件支持。 二.Git的基本用法 在需要建立Git仓库的路径右键点击Git">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/yLOZEeZ.png">
-<meta property="og:updated_time" content="2018-12-02T11:30:29.930Z">
+<meta property="og:image" content="https://i.imgur.com/kh6PAz8.jpg">
+<meta property="og:updated_time" content="2018-12-02T11:45:49.250Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git">
 <meta name="twitter:description" content="Git的学习一.Git的定义Git是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。Git 与常用的版本控制工具 CVS, Subversion 等不同，它采用了分布式版本库的方式，不必服务器端软件支持。 二.Git的基本用法 在需要建立Git仓库的路径右键点击Git">
@@ -95,7 +96,7 @@
 <li><strong>工作流</strong>:你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际文件；第二个是 暂存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，它指向你最后一次提交的结果；</li>
 <li><strong>添加和提交</strong>:你可以提出更改（把它们添加到暂存区），使用如下命令：添加和提交<font color="red">1.git add “filename”2.git add *</font>这是 git 基本工作流程的第一步；接着使用如下命令以实际提交改动：<font color="red">git commit -m “</font>代码提交信息”现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库；</li>
 <li><strong>推送改动</strong>:你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：<br><font color="red">git push origin master</font><br>可以把 master 换成你想要推送的任何分支。<br>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：<br><font color="red">git remote add origin <server></server></font><br>如此你就能够将你的改动推送到所添加的服务器上去了。</li>
-<li><strong>替换本地改动</strong>：假如你操作失误，你可以使用如下命令替换掉本地改动：<br><font color="red">git checkout – “filename”</font><br>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到暂存区的改动以及新文件都不会受到影响。<br>假如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它：<br><font color="red"><strong>1.</strong>git fetch origin <strong>2.</strong>git reset –hard origin/master</font> .</li>
+<li><strong>撤销本地改动</strong>：场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<font color="red">git checkout – file。</font><br>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<font color="red">git reset HEAD “file”</font>，就回到了场景1，第二步按场景1操作。<br>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。</li>
 <li><strong>删除文件</strong>：用<font color="red">git rm test.txt</font>来删除文件，在删除后再用<font color="red">git commit</font>命令来更新本地仓库即可；如果是误删，则用<font color="red">git checkout – test.txt</font>恢复即可。</li>
 </ol>
 <h2 id="三-分支"><a href="#三-分支" class="headerlink" title="三.分支"></a><strong>三.分支</strong></h2><ol>
@@ -106,7 +107,11 @@
 <li>补充：查看分支用<font color="red">git branch</font>；创建分支用<font color="red">git branch “name”</font>;合并某分支到当前分支用<font color="red">git merge “name”</font>.<h2 id="四-Git的优点"><a href="#四-Git的优点" class="headerlink" title="四.Git的优点"></a><strong>四.Git的优点</strong></h2></li>
 <li>Git基本上不删除数据；</li>
 <li>Git基本可以撤销你的所有操作，可以更多的实验和探索自己的想法；</li>
-<li>你团队的每一个成员都在他/她的计算机中有各自的副本，基本上不会有捅了大篓子还没办法还原这种情况。<h2 id="五-实用小贴士"><a href="#五-实用小贴士" class="headerlink" title="五.实用小贴士"></a><strong>五.实用小贴士</strong></h2>内建的图形化 <font color="red">git：<br>gitk</font>;<br>彩色的 git 输出：<br><font color="red">git config color.ui true</font>;<br>显示历史记录时，每个提交的信息只显示一行：<br><font color="red">git config format.pretty oneline</font>;<br>交互式添加文件到暂存区：<br><font color="red">git add -i </font>.</li>
+<li>每个人电脑里都有完整的版本库，某一个人的电脑坏掉了不要紧，随便从其他人那里复制一个就可以了。而集中式版本控制系统的中央服务器要是出了问题，所有人都没法干活了。<br><img src="https://i.imgur.com/kh6PAz8.jpg" alt=""><h2 id="五-实用小贴士"><a href="#五-实用小贴士" class="headerlink" title="五.实用小贴士"></a><strong>五.实用小贴士</strong></h2></li>
+<li>内建的图形化 <font color="red">git：<br>gitk</font>;</li>
+<li>彩色的 git 输出：<br><font color="red">git config color.ui true</font>;</li>
+<li>显示历史记录时，每个提交的信息只显示一行：<br><font color="red">git config format.pretty oneline</font>;</li>
+<li>交互式添加文件到暂存区：<br><font color="red">git add -i </font>.</li>
 </ol>
 <p><font color="blue">参考网址：<a href="http://marklodato.github.io/visual-git-guide/index-zh-cn.html&quot;&quot;" target="_blank" rel="noopener">图解Git</a></font></p>
 
